@@ -5,7 +5,16 @@ module.exports = function(httpServer) {
   // Listen for new connections from clients (socket)
   io.on('connection', function (socket) {
 
-    console.log('client connected');
+    var roomId = Date.now().toString();
+    console.log('client connected to room: ' + roomId + '\n')
+    socket.join(roomId);
+    
+    setTimeout(() => {
+      io.to(roomId).emit('message-from-server')
+    }, 2000);
+
+    // io.broadcast.to(roomId.toString()).emit('message-from-server');
+
     /*
       Client starts up:
         1. Load invite key from local storage
