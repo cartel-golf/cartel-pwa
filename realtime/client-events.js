@@ -1,0 +1,5 @@
+module.exports = {
+  OBTAIN_INVITE: 'OBTAIN_INVITE',
+  SUBMIT_INVITE: 'SUBMIT_INVITE',
+  LOGIN: 'LOGIN',
+};
