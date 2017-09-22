@@ -1,0 +1,11 @@
+:root {
+  --main-bg-color: white;
+}
+
+body {
+  background-color: var(--main-bg-color);
+}
+
+.ui.input input:focus[type="text"]  {
+  border-color: brown;
+}

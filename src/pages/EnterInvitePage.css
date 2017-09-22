@@ -1,0 +1,11 @@
+.EnterInvitePage {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  justify-content: center;
+  align-items: center;
+}
+
+.EnterInvitePage-input {
+  margin-top: 20px;
+}

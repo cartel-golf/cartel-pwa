@@ -1,3 +1,3 @@
 import socket from 'socket.io-client';
 
-export default socket('http://localhost:3001');
+export default socket('localhost:3001');

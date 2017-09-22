@@ -2,6 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import 'semantic-ui-css/semantic.css';
 import './index.css';
+import './override.css';
 import App from './App';
 import registerServiceWorker from './registerServiceWorker';
 // import 'typeface-roboto';
