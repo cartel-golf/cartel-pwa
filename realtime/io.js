@@ -6,7 +6,6 @@ module.exports = function(httpServer) {
   io.on('connection', function (socket) {
 
     var roomId = Date.now().toString();
-    console.log('client connected to room: ' + roomId + '\n')
     socket.join(roomId);
     
     setTimeout(() => {
