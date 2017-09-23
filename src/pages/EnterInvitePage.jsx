@@ -1,32 +1,50 @@
 import React, { Component } from 'react';
-import { Header, Icon, Form, Input } from 'semantic-ui-react';
 import './EnterInvitePage.css';
 import userService from '../utils/userService';
 
 export default class EnterInvitePage extends Component {
-
   state = {
-    message: ' '
+    enteredCode: '',
+    message: null
   }
 
-  handleSubmit = (e, data) => {
-    console.log(e.target);
+  handleChange = (e) => {
+    this.setState({enteredCode: e.target.value});
+  }
+
+  handleSubmit = (e) => {
+    e.preventDefault();
+    userService.submitInvite(this.state.enteredCode)
+    .then(() => {
+      // need to redirect
+      console.log('DEBUG: successful invite code entered!');
+    })
+    .catch(err => {
+      this.setState({ message: err.message});
+    });
   }
 
   render() {
     return (
       <div className='EnterInvitePage'>
-        <Header as='h1' icon textAlign='center'>
-          <Header.Content>
-            Cartel Golf
-            <Icon name='users' />
-          </Header.Content>
-        </Header>
-        <Form onSubmit={this.handleSubmit} style={{marginLeft: -40}}>
-          <Input className='EnterInvitePage-input' placeholder='Enter Your Invite Code'
-            action={{icon: 'check'}}
-          />
-        </Form>
+        <h2 className='ui header'>
+          Cartel Golf
+        </h2>
+        <form onSubmit={this.handleSubmit} className='ui form'>
+          <div className='ui action input'>
+            <input className='EnterInvitePage-input' type='text' placeholder='Enter Your Invite Code'
+              value={this.enteredCode}
+              onChange={this.handleChange}
+            />
+            <button className="ui icon button">
+              <i className="sign in icon"></i>
+            </button>
+          </div>
+        </form>
+        { this.state.message && <div className="ui fluid error message">
+          {this.state.message}
+        </div>
+        }
       </div>
     );
   }

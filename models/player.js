@@ -6,7 +6,8 @@ var playerSchema = new Schema({
   cartelId: { type: Schema.Types.ObjectId, ref: 'Cartel' },
   inviteCode: { type: String, default: null },
   invitedBy: { type: Schema.Types.ObjectId, ref: 'Player', default: null },
-  isBoss: { type: Boolean, default: false }
+  isBoss: { type: Boolean, default: false },
+  active: { type: Boolean, default: true }
 }, {
   timestamps: true
 });

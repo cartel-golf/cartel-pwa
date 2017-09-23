@@ -5,13 +5,15 @@ function getUser() {
 }
 
 function submitInvite(inviteCode) {
-  return fetch('/api/invite/submit', {
+  return fetch('/api/users/invite/submit', {
     method: 'POST',
     headers: {'content-type': 'application/json'},
     body: JSON.stringify({ inviteCode })
   }).then(res => {
-    if (!res.ok) throw new Error(res.statusText);
+    if (!res.ok) throw new Error("That's an invalid invite code bitch!");
     return res.json();
+  }).catch(() => {
+    throw new Error('A network error occurred. Ensure you are connected to the Internet.');
   });
 }
 

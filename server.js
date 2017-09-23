@@ -15,6 +15,9 @@ app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(express.static(path.join(__dirname, 'build')));
 
+// api routes
+app.use('/api', require('./routes/api'));
+
 // catch all route for all non-api requests
 app.get('/*', function(req, res) {
   res.sendFile(path.join(__dirname, 'build', 'index.html'));
