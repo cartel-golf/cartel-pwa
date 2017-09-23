@@ -9,11 +9,13 @@ function submitInvite(inviteCode) {
     method: 'POST',
     headers: {'content-type': 'application/json'},
     body: JSON.stringify({ inviteCode })
+  }).catch(() => {
+    throw new Error('A network error occurred. Ensure you are connected to the Internet.');
   }).then(res => {
     if (!res.ok) throw new Error("That's an invalid invite code bitch!");
     return res.json();
-  }).catch(() => {
-    throw new Error('A network error occurred. Ensure you are connected to the Internet.');
+  }).then(({ token }) => {
+    tokenService.setToken(token);
   });
 }
 

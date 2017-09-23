@@ -9,7 +9,13 @@ var playerSchema = new Schema({
   isBoss: { type: Boolean, default: false },
   active: { type: Boolean, default: true }
 }, {
-  timestamps: true
+  timestamps: true,
+  toJSON: {
+    transform: function (doc, ret) {
+      delete ret.inviteCode;
+      delete ret.invitedBy;
+    }
+  }
 });
 
 module.exports = mongoose.model('Player', playerSchema);

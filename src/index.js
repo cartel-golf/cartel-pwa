@@ -11,7 +11,6 @@ import { Provider } from 'react-redux';
 import store from './store';
 
 import socket from './utils/socket';
-console.log(socket)
 socket.on('message-from-server', function() {console.log('recieved message from server')})
 
 ReactDOM.render(

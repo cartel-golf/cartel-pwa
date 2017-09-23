@@ -1,3 +1,5 @@
-import socket from 'socket.io-client';
+import socketClient from 'socket.io-client';
 
-export default socket(process.env.SOCKET_URL);
+const socket = socketClient(process.env.SOCKET_URL);
+
+export default socket;
