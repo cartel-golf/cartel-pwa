@@ -16,6 +16,7 @@ function submitInvite(inviteCode) {
     return res.json();
   }).then(({ token }) => {
     tokenService.setToken(token);
+    return tokenService.getUserFromToken();
   });
 }
 

@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { newUserTokenSet } from '../actions/actionCreators';
 import './EnterInvitePage.css';
 import userService from '../utils/userService';
 
@@ -19,9 +20,8 @@ class EnterInvitePage extends Component {
   handleSubmit = (e) => {
     e.preventDefault();
     userService.submitInvite(this.state.enteredCode)
-    .then(() => {
-      
-      console.log('DEBUG: successful invite code entered!');
+    .then((user) => {
+      this.props.newUserTokenSet(user);
     })
     .catch(err => {
       this.setState({ message: err.message});
@@ -56,5 +56,9 @@ class EnterInvitePage extends Component {
 
 export default connect(
   // map state to props
+  (state) => ({ }),
   // map display to props
+  {
+    newUserTokenSet
+  }
 )(EnterInvitePage);
