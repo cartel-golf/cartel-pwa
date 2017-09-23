@@ -52,6 +52,7 @@ mongoose.connect(process.env.DATABASE_URL, {
   return Player.create({
     screenName: 'Clarkie',
     cartelId: cartel._id,
+    inviteCode: 'abc123',
     isBoss: true
   });
 })
