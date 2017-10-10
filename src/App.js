@@ -3,6 +3,7 @@ import './App.css';
 import { Route } from 'react-router-dom';
 import { connect } from 'react-redux';
 import EnterInvitePage from './pages/EnterInvitePage';
+import MainPage from './pages/MainPage';
 
 class App extends Component {
 
@@ -10,7 +11,7 @@ class App extends Component {
     return (
       this.props.user ?
         <Route path='/'>
-          <div>main page</div>
+          <MainPage />
         </Route>
       :
         <EnterInvitePage />
