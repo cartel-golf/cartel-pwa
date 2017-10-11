@@ -1,6 +1,6 @@
 {
-  "short_name": "Cartel Golf",
-  "name": "Cartel Golf",
+  "short_name": "CARTEL GOLF",
+  "name": "CARTEL GOLF",
   "icons": [
     {
       "src": "favicon.ico",
@@ -10,6 +10,6 @@
   ],
   "start_url": "./index.html",
   "display": "standalone",
-  "theme_color": "#000000",
-  "background_color": "#ffffff"
+  "theme_color": "#D13A82",
+  "background_color": "#F5F1E3"
 }
