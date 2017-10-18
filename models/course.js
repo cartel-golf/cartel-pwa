@@ -10,8 +10,7 @@ var holeSchema = new Schema({
 var courseSchema = new Schema({
   longName: String,
   shortName: String,
-  holes: [holeSchema],
-  activeRound: { type: Schema.Types.ObjectId, ref: 'Round', default: null }
+  holes: [holeSchema]
 }, {
   timestamps: true
 });
