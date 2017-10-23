@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { newUserTokenSet } from '../actions/actionCreators';
 import './EnterInvitePage.css';
+import LogoSlogan from '../components/LogoSlogan';
 import userService from '../utils/userService';
 
 class EnterInvitePage extends Component {
@@ -31,10 +32,8 @@ class EnterInvitePage extends Component {
   render() {
     return (
       <div className='EnterInvitePage'>
-        <h2 className='ui header'>
-          Cartel Golf
-        </h2>
-        <form onSubmit={this.handleSubmit} className='ui form'>
+        <LogoSlogan />
+        <form onSubmit={this.handleSubmit} className='ui form' style={{marginTop: 30}}>
           <div className='ui action input'>
             <input className='EnterInvitePage-input' type='text' placeholder='Enter Your Invite Code'
               value={this.enteredCode}
