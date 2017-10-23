@@ -33,14 +33,14 @@ class EnterInvitePage extends Component {
     return (
       <div className='EnterInvitePage'>
         <LogoSlogan />
-        <form onSubmit={this.handleSubmit} className='ui form' style={{marginTop: 30}}>
+        <form onSubmit={this.handleSubmit} className='ui form' >
           <div className='ui action input'>
             <input className='EnterInvitePage-input' type='text' placeholder='Enter Your Invite Code'
               value={this.enteredCode}
               onChange={this.handleChange}
             />
             <button className="ui icon button">
-              <i className="sign in icon"></i>
+              <i className="privacy icon"></i>
             </button>
           </div>
         </form>
