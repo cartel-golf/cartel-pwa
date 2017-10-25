@@ -23,13 +23,13 @@ html, body {
   40% {
     transform: rotate(5deg);
   }
-  60% {
+  50% {
     transform: rotate(10deg);
   }
-  80% {
+  70% {
     transform: rotate(0deg);
   }
-  90% {
+  85% {
     transform: rotate(-5deg);
   }
   100% {
