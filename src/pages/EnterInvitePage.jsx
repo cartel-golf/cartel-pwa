@@ -31,18 +31,19 @@ class EnterInvitePage extends Component {
 
   render() {
     return (
-      <div className='EnterInvitePage'>
+      <div className='EnterInvitePage Page-wrapper'>
         <LogoSlogan />
         <div>
-          <form onSubmit={this.handleSubmit} className='ui form' >
-            <div className='ui input large'>
-              <input type='text' placeholder='Enter Your Invite Code'
-                value={this.enteredCode}
-                onChange={this.handleChange}
+          <form onSubmit={this.handleSubmit} className='ui form Flex-col' >
+            <div className='ui input'>
+              <input id='inp' type='text' placeholder='Enter Your Invite Code'
+                required={true}
+                pattern='[0-9a-f]{24}'
+                title='Enter a valid invite code'
               />
             </div>
-            <button type="submit" className="ui icon button basic large">
-              <i className="privacy icon"></i>
+            <button id="submit" type="submit" className="ui icon button basic">
+              Submit Invite&nbsp;&nbsp;&nbsp;<i className="sign in icon"></i>
             </button>
           </form>
           <div className="ui error message" style={{visibility: this.state.message ? 'visible' : 'hidden' }} >

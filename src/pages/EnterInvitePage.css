@@ -1,10 +1,17 @@
 .EnterInvitePage {
-  display: flex;
-  flex-direction: column;
-  height: 100%;
-  align-items: center;
+  justify-content: center;
 }
 
-.EnterInvitePage form button {
-  margin-left: 5px;
+.EnterInvitePage form {
+  width: 230px;
+  margin-top: 50px;
+}
+
+.EnterInvitePage #submit {
+  display: block;
+  margin: 5px auto;
+}
+
+.EnterInvitePage #inp {
+  width: 230px;
 }
