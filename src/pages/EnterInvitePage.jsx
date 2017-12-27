@@ -33,21 +33,22 @@ class EnterInvitePage extends Component {
     return (
       <div className='EnterInvitePage'>
         <LogoSlogan />
-        <form onSubmit={this.handleSubmit} className='ui form' >
-          <div className='ui action input'>
-            <input className='EnterInvitePage-input' type='text' placeholder='Enter Your Invite Code'
-              value={this.enteredCode}
-              onChange={this.handleChange}
-            />
-            <button className="ui icon button">
+        <div>
+          <form onSubmit={this.handleSubmit} className='ui form' >
+            <div className='ui input large'>
+              <input type='text' placeholder='Enter Your Invite Code'
+                value={this.enteredCode}
+                onChange={this.handleChange}
+              />
+            </div>
+            <button type="submit" className="ui icon button basic large">
               <i className="privacy icon"></i>
             </button>
+          </form>
+          <div className="ui error message" style={{visibility: this.state.message ? 'visible' : 'hidden' }} >
+            {this.state.message}
           </div>
-        </form>
-        { this.state.message && <div className="ui error message">
-          {this.state.message}
         </div>
-        }
       </div>
     );
   }

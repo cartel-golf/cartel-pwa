@@ -1,7 +1,7 @@
 /* Coolors Exported Palette - coolors.co/050505-d13a82-dddbcb-f5f1e3-ffffff */
 :root {
   --dark-text-color: #050505;
-  --accenct-color: #D13A82;
+  --accent-color: #D13A82;
   --dark-bg-color: #DDDBCB;
   --main-bg-color: #F5F1E3;
   --light-text-color: #FFFFFF;
@@ -12,5 +12,5 @@ body {
 }
 
 .ui.input input:focus[type="text"]  {
-  border-color: var(--accenct-color);
+  border-color: var(--accent-color);
 }
