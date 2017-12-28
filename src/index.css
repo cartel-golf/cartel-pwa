@@ -34,13 +34,6 @@ html, body {
   align-items: center;
 }
 
-.Flex-col {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-}
-
 @keyframes logo-animation {
   0% {
     transform: rotate(0deg);

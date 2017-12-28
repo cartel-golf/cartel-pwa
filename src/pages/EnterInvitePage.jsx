@@ -34,7 +34,7 @@ class EnterInvitePage extends Component {
       <div className='EnterInvitePage Page-wrapper'>
         <LogoSlogan />
         <div>
-          <form onSubmit={this.handleSubmit} className='ui form Flex-col' >
+          <form onSubmit={this.handleSubmit} className='ui form flex-col justify-content-center' >
             <div className='ui input'>
               <input id='inp' type='text' placeholder='Enter Your Invite Code'
                 required={true}
