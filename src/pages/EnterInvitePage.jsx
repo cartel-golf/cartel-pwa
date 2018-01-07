@@ -36,10 +36,9 @@ class EnterInvitePage extends Component {
         <div>
           <form onSubmit={this.handleSubmit} className='ui form flex-col justify-content-center' >
             <div className='ui input'>
-              <input id='inp' type='text' placeholder='Enter Your Invite Code'
-                required={true}
-                pattern='[0-9a-f]{24}'
-                title='Enter a valid invite code'
+              <input id='inp' type='text' autoComplete='off'
+                placeholder='Enter Your Invite Code'
+                value={this.state.enteredCode} onChange={this.handleChange}
               />
             </div>
             <button id="submit" type="submit" className="ui icon button basic">
@@ -57,8 +56,8 @@ class EnterInvitePage extends Component {
 
 export default connect(
   // map state to props
-  (state) => ({ }),
-  // map display to props
+  null,
+  // map dispatch to props
   {
     newUserTokenSet
   }
