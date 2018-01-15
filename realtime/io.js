@@ -16,8 +16,8 @@ module.exports = function(httpServer) {
 
     /*
       Client starts up:
-        1. Load invite key from local storage
-        2. If no invite key
+        1. Load token key from local storage
+        2. If no tokenrails
           2a. Show Submit Invite screen
           2b. When user submits invite code 
       

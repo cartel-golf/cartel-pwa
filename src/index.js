@@ -1,11 +1,13 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './semantic/dist/semantic.min.css';
 import './index.css';
-import './override.css';
+import './theme.css';
 import App from './App';
 import registerServiceWorker from './registerServiceWorker';
-// import 'typeface-roboto';
+
+import 'typeface-roboto';
+import 'typeface-roboto-mono';
+
 import {BrowserRouter as Router} from 'react-router-dom';
 import { Provider } from 'react-redux';
 import store from './store';

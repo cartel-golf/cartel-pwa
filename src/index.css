@@ -1,5 +1,6 @@
 html, body {
   height: 100%;
+  font-family: Roboto, 'Helvetica Neue', Arial, Helvetica, sans-serif
 }
 
 #root {
@@ -7,6 +8,7 @@ html, body {
   display: flex;
   flex-flow: column;
   justify-content: space-between;
+  align-items: center;
 }
 
 .flex-row {
@@ -24,13 +26,6 @@ html, body {
 }
 
 .align-items-center {
-  align-items: center;
-}
-
-.Page-wrapper {
-  height: 100%;
-  display: flex;
-  flex-direction: column;
   align-items: center;
 }
 

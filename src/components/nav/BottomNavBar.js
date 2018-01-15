@@ -1,10 +1,5 @@
 import React, { Component } from 'react';
-import FontIcon from 'material-ui/FontIcon';
-import IconLocationOn from 'material-ui/svg-icons/communication/location-on';
-import { BottomNavigation, BottomNavigationItem } from 'material-ui/BottomNavigation';
-
-const favoritesIcon = <FontIcon className="material-icons">favorite</FontIcon>;
-const nearbyIcon = <IconLocationOn />;
+import './BottomNavBar.css';
 
 export default class BottomNavBar extends Component {
   constructor() {
@@ -18,18 +13,16 @@ export default class BottomNavBar extends Component {
 
   render() {
     return (
-      <BottomNavigation selectedIndex={this.state.selectedIndex}>
-        <BottomNavigationItem
+      <nav className='BottomNavBar' data-selected-index={this.state.selectedIndex}>
+        <div
           label="Favorites"
-          icon={favoritesIcon}
           onClick={() => this.select(0)}
         />
-        <BottomNavigationItem
+        <div
           label="Nearby"
-          icon={nearbyIcon}
           onClick={() => this.select(1)}
         />
-      </BottomNavigation>
+      </nav>
     );
   }
 }
