@@ -12,8 +12,8 @@ import {BrowserRouter as Router} from 'react-router-dom';
 import { Provider } from 'react-redux';
 import store from './store';
 
-import socket from './utils/socket';
-socket.on('message-from-server', function() {console.log('recieved message from server')})
+// connect to the socket.io server
+import './utils/socket';
 
 ReactDOM.render(
   <Provider store={store} >
