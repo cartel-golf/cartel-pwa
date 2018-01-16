@@ -1,16 +1,72 @@
-/* Coolors Exported Palette - coolors.co/050505-d13a82-dddbcb-f5f1e3-ffffff */
 :root {
-  --dark-text-color: #050505;
-  --accent-color: #D13A82;
-  --dark-bg-color: #DDDBCB;
-  --main-bg-color: #F5F1E3;
-  --light-text-color: #FFFFFF;
+  /* Window background */
+  --window-bg-color: #E1E2E1;
+  /* Cards and Dialogs */
+  --dialog-bg-color: #FFFFFF;
+  /* App and toolbars */
+  --primary-color: #f5f1e4;
+  --primary-light-color: #ffffff;
+  /* Status bar */
+  --primary-dark-color: #c2beb2;
+  --secondary-color: #c62828;
+  --secondary-light-color: #ff5f52;
+  --secondary-dark-color: #8e0000;
+  /* DARK TEXT ON LIGHT BACKGROUNDS */
+  /* most important text */
+  --primary-dark-text: rgba(0, 0, 0, .87);
+  --secondary-dark-text: rgba(0, 0, 0, .54);
+  /* labels and disabled text */
+  --hint-dark-text: rgba(0, 0, 0, .38);
+  --dividers-dark: rgba(0, 0, 0, .12);
+  /* LIGHT TEXT ON DARK BACKGROUNDS */
+  /* white text on colored backgrounds should use 100% opacity */
+  --primary-light-text: rgba(255, 255, 255, 1);
+  --secondary-light-text: rgba(255, 255, 255, .7);
+  --hint-light-text: rgba(255, 255, 255, .5);
+  --dividers-light: rgba(255, 255, 255, .12);
 }
 
 body {
-  background-color: var(--main-bg-color);
+  background-color: var(--window-bg-color);
 }
 
-.ui.input input:focus[type="text"]  {
-  border-color: var(--accent-color);
+input, textarea, select {
+  border: 2px solid transparent;
+  outline: none;
+  border-radius: 2px;
+  padding: .25em;
+}
+
+input:focus, input:active {
+  border-color: transparent;
+  border-bottom: 2px solid var(--secondary-light-color);
+}
+
+button {
+  outline: none;
+  height: 36px;
+  font-size: 14px;
+  margin-left: 8px;
+  padding-left: 16px;
+  padding-right: 16px;
+  min-width: 88px;
+  color: var(--primary-light-text);
+  background-color: var(--secondary-color);
+  border: none;
+  border-radius: 2px;
+}
+
+button.invert {
+  background-color: var(--primary-light-text);
+  color: var(--secondary-color);
+}
+
+.title {
+  font-size: 24px;
+  color: var(--primary-dark-text);
+}
+
+.sub-title {
+  font-size: 14px;
+  color: var(--secondary-dark-text);
 }

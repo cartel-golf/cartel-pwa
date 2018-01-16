@@ -1,0 +1,13 @@
+.CardTitle > p {
+  padding: 0;
+  margin: 0 0 2px;
+  font-size: 24px;
+  color: var(--primary-dark-text);
+}
+
+.CardTitle > p + p {
+  padding: 0;
+  margin-bottom: 12px;
+  font-size: 14px;
+  color: var(--secondary-dark-text);
+}

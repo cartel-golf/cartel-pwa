@@ -2,19 +2,22 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { newUserTokenSet } from '../actions/actionCreators';
 import './EnterInvitePage.css';
-import LogoSlogan from '../components/LogoSlogan';
+import Card from '../components/ui/Card';
+import CardTitle from '../components/ui/CardTitle';
+import CardButtonContainer from '../components/ui/CardButtonContainer';
+import LogoSlogan from '../components/ui/LogoSlogan';
 import userService from '../utils/userService';
 
 class EnterInvitePage extends Component {
   state = {
     enteredCode: '',
-    message: null
+    message: ''
   }
 
   handleChange = (e) => {
     this.setState({
       enteredCode: e.target.value,
-      message: null
+      message: ''
     });
   }
 
@@ -31,25 +34,23 @@ class EnterInvitePage extends Component {
 
   render() {
     return (
-      <div className='EnterInvitePage Page-wrapper'>
+      <main className='EnterInvitePage page-wrapper justify-content-center'>
         <LogoSlogan />
-        <div>
-          <form onSubmit={this.handleSubmit} className='ui form flex-col justify-content-center' >
-            <div className='ui input'>
-              <input id='inp' type='text' autoComplete='off'
-                placeholder='Enter Your Invite Code'
-                value={this.state.enteredCode} onChange={this.handleChange}
-              />
-            </div>
-            <button id="submit" type="submit" className="ui icon button basic">
-              Submit Invite&nbsp;&nbsp;&nbsp;<i className="sign in icon"></i>
-            </button>
-          </form>
-          <div className="ui error message" style={{visibility: this.state.message ? 'visible' : 'hidden' }} >
-            {this.state.message}
-          </div>
-        </div>
-      </div>
+        <Card>
+          <CardTitle className='CardTitle'>
+            <p>Welcome to Cartel Golf</p>
+            <p className='sub-title'>Please submit your personal invite code you obtained from  an existing member of the cartel you wish to join</p>
+          </CardTitle>
+          <input id='inp' type='text' autoComplete='off'
+            placeholder='Enter Your Invite Code'
+            value={this.state.enteredCode} onChange={this.handleChange}
+          />
+          <h5>{this.state.message || ' '}</h5>
+          <CardButtonContainer>
+            <button>SUBMIT INVITE</button>
+          </CardButtonContainer>
+        </Card>
+      </main>
     );
   }
 }

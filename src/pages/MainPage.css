@@ -1,3 +1,4 @@
 nav.TopAppBar + * {
-  margin-top: 56px;
+  padding-top: 56px;
+  background-color: var(--window-bg-color);
 }
