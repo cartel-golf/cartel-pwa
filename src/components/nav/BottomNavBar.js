@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
 import './BottomNavBar.css';
 
+// TODO: remove - temp code
+import userService from '../../utils/userService';
+
 export default class BottomNavBar extends Component {
   constructor() {
     super();
@@ -14,6 +17,14 @@ export default class BottomNavBar extends Component {
   render() {
     return (
       <nav className='BottomNavBar' data-selected-index={this.state.selectedIndex}>
+
+
+
+        <button onClick={userService.forgetMe}>FORGET ME</button>
+
+
+
+
         <div
           label="Favorites"
           onClick={() => this.select(0)}

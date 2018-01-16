@@ -20,7 +20,13 @@ function submitInvite(inviteCode) {
   });
 }
 
+function forgetMe() {
+  tokenService.removeToken();
+  window.location.href = '/';
+}
+
 export default {
   getUser,
-  submitInvite
+  submitInvite,
+  forgetMe
 };
