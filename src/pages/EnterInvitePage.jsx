@@ -47,7 +47,7 @@ class EnterInvitePage extends Component {
           />
           <h5>{this.state.message || ' '}</h5>
           <CardButtonContainer>
-            <button>SUBMIT INVITE</button>
+            <button onClick={this.handleSubmit}>SUBMIT INVITE</button>
           </CardButtonContainer>
         </Card>
       </main>
