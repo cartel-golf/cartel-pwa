@@ -12,8 +12,8 @@ export default () => {
   };
   return (
     <div className='LogoSlogan flex-col justify-content-center align-items-center'>
-      <h2>✣&nbsp;&nbsp;CARTEL GOLF&nbsp;&nbsp;✣</h2>
-      <img src={require('../../images/logo-2.png')} width='120' alt='' style={style} />
-      <h3 style={{ marginTop: 25 }}>GOLF NOW&nbsp;&nbsp;✣&nbsp;&nbsp;DIE LATER</h3>
+      {/* <h1>✣&nbsp;CARTEL GOLF&nbsp;✣</h1> */}
+      <img src={require('../../images/logo-2.png')} alt='' width='440' style={style} />
+      {/* <h2>✣&nbsp;GOLF NOW&nbsp;✣&nbsp;DIE LATER&nbsp;;✣</h2> */}
     </div>
 )};
