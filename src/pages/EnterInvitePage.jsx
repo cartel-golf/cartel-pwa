@@ -39,7 +39,7 @@ class EnterInvitePage extends Component {
         <Card>
           <CardTitle className='CardTitle'>
             <p>Welcome to Cartel Golf</p>
-            <p className='sub-title'>Please submit your personal invite code you obtained from  an existing member of the cartel you wish to join</p>
+            <p className='sub-title'>Submit the invite code you obtained from an existing member of the cartel you wish to join:</p>
           </CardTitle>
           <input id='inp' type='text' autoComplete='off'
             placeholder='Enter Your Invite Code'
