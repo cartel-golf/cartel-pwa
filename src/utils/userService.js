@@ -12,7 +12,7 @@ function submitInvite(inviteCode) {
   }).catch(() => {
     throw new Error('A network error occurred. Ensure you are connected to the Internet.');
   }).then(res => {
-    if (!res.ok) throw new Error("That's an invalid invite code bitch!");
+    if (!res.ok) throw new Error("Invalid code bitch!");
     return res.json();
   }).then(({ token }) => {
     tokenService.setToken(token);

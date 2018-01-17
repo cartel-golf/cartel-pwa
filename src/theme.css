@@ -1,16 +1,17 @@
 :root {
   /* Window background */
-  --window-bg-color: #E1E2E1;
+  --window-bg-color: #fdf6e4;
+  --window-bg-dark-color: #cac3b2;
   /* Cards and Dialogs */
-  --dialog-bg-color: #FFFFFF;
+  --dialog-bg-color: #fff;
   /* App and toolbars */
-  --primary-color: #f5f1e4;
-  --primary-light-color: #ffffff;
+  --primary-color: #b71c1c;
+  --primary-light-color: #f05545;
   /* Status bar */
-  --primary-dark-color: #c2beb2;
-  --secondary-color: #c62828;
-  --secondary-light-color: #ff5f52;
-  --secondary-dark-color: #8e0000;
+  --primary-dark-color: #7f0000;
+  --secondary-color: #1b5e20;
+  --secondary-light-color: #4c8c4a;
+  --secondary-dark-color: #003300;
   /* DARK TEXT ON LIGHT BACKGROUNDS */
   /* most important text */
   --primary-dark-text: rgba(0, 0, 0, .87);
@@ -37,7 +38,8 @@ body {
 
 input, textarea, select {
   font-size: 16px;
-  border: 1px solid var(--primary-dark-color);
+  color: var(--primary-dark-text);
+  border: 1px solid var(--dividers-dark);
   outline: none;
   border-radius: 2px;
   padding: .25em;
@@ -45,11 +47,14 @@ input, textarea, select {
 
 input:focus, input:active {
   border-color: transparent;
-  border: 1px solid var(--primary-color);
+  border: 1px solid var(--secondary-dark-text);
 }
 
 input + p.helper {
+  height: 14px;
   font-size: 12px;
+  margin-top: 8px;
+  margin-bottom: 0;
 }
 
 button {
@@ -61,7 +66,7 @@ button {
   padding-right: 16px;
   min-width: 88px;
   color: var(--primary-light-text);
-  background-color: var(--secondary-color);
+  background-color: var(--primary-color);
   border: none;
   border-radius: 2px;
 }
