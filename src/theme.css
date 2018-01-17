@@ -24,6 +24,11 @@
   --secondary-light-text: rgba(255, 255, 255, .7);
   --hint-light-text: rgba(255, 255, 255, .5);
   --dividers-light: rgba(255, 255, 255, .12);
+  --error-text: var(--primary-dark-color);
+}
+
+.error-text {
+  color: var(--error-text);
 }
 
 body {
@@ -31,7 +36,8 @@ body {
 }
 
 input, textarea, select {
-  border: 2px solid transparent;
+  font-size: 16px;
+  border: 1px solid var(--primary-dark-color);
   outline: none;
   border-radius: 2px;
   padding: .25em;
@@ -39,7 +45,11 @@ input, textarea, select {
 
 input:focus, input:active {
   border-color: transparent;
-  border-bottom: 2px solid var(--secondary-light-color);
+  border: 1px solid var(--primary-color);
+}
+
+input + p.helper {
+  font-size: 12px;
 }
 
 button {

@@ -1,5 +1,5 @@
 .CardButtonContainer {
-  width: 100%;
+  width: calc(100% + 16px);
   position: relative;
   right: 0;
   bottom: 0;

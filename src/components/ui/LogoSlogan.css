@@ -2,6 +2,10 @@
   font-family: 'Nothing You Could Do';
 }
 
+.LogoSlogan img {
+  width: 100%;
+}
+
 .LogoSlogan h1 {
   font-size: 14px;
 }
@@ -9,8 +13,4 @@
 .LogoSlogan h2 {
   font-size: 12px;
   margin-top: 14px;
-}
-
-.LogoImg img {
-  width: 85px;
 }

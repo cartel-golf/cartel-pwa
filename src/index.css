@@ -1,5 +1,8 @@
-html, body {
+* {
   box-sizing: border-box;
+}
+
+html, body {
   height: 100%;
   font-family: Roboto, 'Helvetica Neue', Arial, Helvetica, sans-serif;
   margin: 0;
@@ -36,31 +39,12 @@ html, body {
   justify-content: center;
 }
 
+.justify-content-between {
+  justify-content: space-between;
+}
+
 .align-items-center {
   align-items: center;
 }
 
-@keyframes logo-animation {
-  0% {
-    transform: rotate(0deg);
-  }
-  20% {
-    transform: rotate(10deg);
-  }
-  40% {
-    transform: rotate(5deg);
-  }
-  50% {
-    transform: rotate(10deg);
-  }
-  70% {
-    transform: rotate(0deg);
-  }
-  85% {
-    transform: rotate(-5deg);
-  }
-  100% {
-    transform: rotate(0deg);
-  }
-}
 

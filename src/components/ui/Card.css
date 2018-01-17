@@ -1,6 +1,5 @@
 .Card {
-  width: calc(100% - 48px);
-  position: relative;
+  width: calc(100% - 16px);
   background-color: var(--dialog-bg-color);
   margin-top: 8px;
   padding: 16px 16px 0;
@@ -9,4 +8,8 @@
 
 .Card:last-child {
   margin-bottom: 8px;
+}
+
+.Card input {
+  width: 100%;
 }

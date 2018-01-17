@@ -7,7 +7,7 @@
 
 .CardTitle > p + p {
   padding: 0;
-  margin-bottom: 12px;
+  margin-bottom: 16px;
   font-size: 14px;
   color: var(--secondary-dark-text);
 }
