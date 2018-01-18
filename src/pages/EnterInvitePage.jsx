@@ -12,14 +12,14 @@ class EnterInvitePage extends Component {
     enteredCode: '',
     message: ''
   }
-
+  
   handleChange = (e) => {
     this.setState({
       enteredCode: e.target.value,
       message: ''
     });
   }
-
+  
   handleSubmit = (e) => {
     e.preventDefault();
     userService.submitInvite(this.state.enteredCode)
@@ -30,12 +30,17 @@ class EnterInvitePage extends Component {
       this.setState({ message: err.message});
     });
   }
-
+  
+  componentDidMount() {
+    this.div.style.height = (this.div.parentElement.clientHeight - this.div.nextSibling.clientHeight) + 'px';
+  }
+  
   render() {
     return (
       <main className='EnterInvitePage'>
-        <img src={require('../images/logo-2.png')} alt='' />
-        {/* <div id='EnterInvitePage-card'> */}
+        <div ref={(div => this.div = div)}>
+          <img src={require('../images/logo-2.png')} alt='' />
+        </div>
           <Card>
             <CardTitle className='CardTitle'>
               <p>Welcome to Cartel Golf</p>
@@ -50,7 +55,6 @@ class EnterInvitePage extends Component {
               <button onClick={this.handleSubmit}>SUBMIT INVITE</button>
             </CardButtonContainer>
           </Card>
-        {/* </div> */}
       </main>
     );
   }
