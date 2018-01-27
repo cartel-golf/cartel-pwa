@@ -7,6 +7,7 @@
     "dotenv": "^4.0.0",
     "express": "^4.15.5",
     "jquery": "^3.2.1",
+    "js-shortid": "^0.1.1",
     "jsonwebtoken": "^8.1.0",
     "mongoose": "^4.13.9",
     "morgan": "~1.8.1",
