@@ -101,6 +101,6 @@
   ],
   "start_url": "./index.html",
   "display": "standalone",
-  "theme_color": "#c2beb2",
-  "background_color": "#f5f1e4"
+  "theme_color": "#75002e",
+  "background_color": "#fffdf6"
 }
