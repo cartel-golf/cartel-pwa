@@ -14,7 +14,8 @@
 
 .TopAppBar-title {
   position: absolute;
-  left: 72px;
+  color: var(--primary-light-text);
+  left: 56px;
   font-size: 20px;
   font-weight: 500;
 }

@@ -1,14 +1,16 @@
 :root {
   /* Window background */
-  --window-bg-color: #fdf6e4;
-  --window-bg-dark-color: #cac3b2;
+  --window-bg-color: #fffdf6;
+  /* --window-bg-color: #fdf6e4; */
+  --window-bg-dark-color: #d7d3c5;
+  /* --window-bg-dark-color: #cac3b2; */
   /* Cards and Dialogs */
   --dialog-bg-color: #fff;
   /* App and toolbars */
-  --primary-color: #b71c1c;
-  --primary-light-color: #f05545;
+  --primary-color: #aa1a57;
+  --primary-light-color: #e05383;
   /* Status bar */
-  --primary-dark-color: #7f0000;
+  --primary-dark-color: #75002e;
   --secondary-color: #1b5e20;
   --secondary-light-color: #4c8c4a;
   --secondary-dark-color: #003300;
