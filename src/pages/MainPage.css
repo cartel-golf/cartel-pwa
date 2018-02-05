@@ -1,4 +1,14 @@
-nav.TopAppBar + * {
-  padding-top: 56px;
+.MainPage {
+  display: grid;
+  height: 100vh;
+  grid-template-areas:
+    "header"
+    "content"
+    "footer";
+  grid-template-columns: 100vw;
+  grid-template-rows:
+    56px 
+    1fr
+    56px;
   background-color: var(--window-bg-color);
 }

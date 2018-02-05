@@ -2,15 +2,14 @@
 .TopAppBar {
   display: flex;
   align-items: center;
-  position: fixed;
-  top: 0;
-  left: 0;
-  z-index: 9999;
-  width: 100%;
   height: 56px;
   padding-left: 16px;
   padding-right: 16px;
   background-color: var(--primary-color);
+}
+
+.TopAppBar.header {
+  grid-area: header;
 }
 
 .TopAppBar-title {

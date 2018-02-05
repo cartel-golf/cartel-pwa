@@ -16,14 +16,9 @@ export default class BottomNavBar extends Component {
 
   render() {
     return (
-      <nav className='BottomNavBar' data-selected-index={this.state.selectedIndex}>
-
-
+      <nav className='BottomNavBar footer' data-selected-index={this.state.selectedIndex}>
 
         <button onClick={userService.forgetMe}>FORGET ME</button>
-
-
-
 
         <div
           label="Favorites"

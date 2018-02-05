@@ -1,15 +1,17 @@
-import React, { Fragment } from 'react';
-
+import React from 'react';
 import './MainPage.css';
-import BottomNavBar from '../components/nav/BottomNavBar';
+import AppContent from '../components/ui/AppContent';
 import TopAppBar from '../components/nav/TopAppBar';
+import BottomNavBar from '../components/nav/BottomNavBar';
 
 export default (props) => {
   return (
-    <Fragment>
+    <main className='MainPage'>
       <TopAppBar/>
-      <h1>Main Page</h1>
+      <AppContent>
+        <h1>Main Page</h1>
+      </AppContent>
       <BottomNavBar/>
-    </Fragment>
+    </main>
   );
 };

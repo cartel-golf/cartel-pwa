@@ -1,0 +1,8 @@
+.AppContent {
+  overflow: scroll;
+  background-color: var(--window-bg-color);
+}
+
+.AppContent.content {
+  grid-area: content;
+}
