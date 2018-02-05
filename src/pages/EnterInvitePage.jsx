@@ -31,14 +31,10 @@ class EnterInvitePage extends Component {
     });
   }
   
-  componentDidMount() {
-    this.div.style.height = (this.div.parentElement.clientHeight - this.div.nextSibling.clientHeight) + 'px';
-  }
-  
   render() {
     return (
       <main className='EnterInvitePage'>
-        <div ref={(div => this.div = div)}>
+        <div className='EnterInvietPage-img'>
           <img src={require('../images/logo-2.png')} alt='' />
         </div>
           <Card>
