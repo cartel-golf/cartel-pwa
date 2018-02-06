@@ -2,13 +2,11 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import './MainPage.css';
 import AppContent from '../components/ui/AppContent';
+import DisconnectedMessage from '../components/ui/DisconnectedMessage';
 import TopAppBar from '../components/nav/TopAppBar';
 import BottomNavBar from '../components/nav/BottomNavBar';
 
 class MainPage extends Component {
-  constructor(props) {
-    super(props);
-  }
   componentDidMount() {
 
     // setTimeout(()=>{this.setState({loading: false})}, 3000);
@@ -26,6 +24,7 @@ class MainPage extends Component {
     return (
       <main className='MainPage'>
         <TopAppBar/>
+        { !this.props.systemState.connected && <DisconnectedMessage/> }
         <AppContent>
           { screen }
         </AppContent>

@@ -5,13 +5,6 @@ module.exports = function(httpServer) {
   // Listen for new connections from clients (socket)
   io.on('connection', function (socket) {
 
-    var roomId = Date.now().toString();
-    socket.join(roomId);
-    
-    setTimeout(() => {
-      io.to(roomId).emit('message-from-server')
-    }, 2000);
-
     // io.broadcast.to(roomId.toString()).emit('message-from-server');
 
     /*

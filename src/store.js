@@ -6,6 +6,8 @@ import rootReducer from './reducers/root';
 export default createStore(
   rootReducer,
   composeWithDevTools(
-    applyMiddleware(thunkMiddleware)
+    applyMiddleware(
+      thunkMiddleware
+    )
   )
 );

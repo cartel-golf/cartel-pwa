@@ -1,3 +1,8 @@
+/*--- systemState actions ---*/
+
+export const WS_CONNECT = 'WS_CONNECT';
+export const WS_DISCONNECT = 'WS_DISCONNECT';
+
 /*--- userState actions ---*/
 
 export const NEW_USER_TOKEN_SET = 'NEW_USER_TOKEN_SET';

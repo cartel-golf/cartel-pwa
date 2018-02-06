@@ -1,9 +1,18 @@
+import * as actions from '../actions/actionNames';
+
 // reducer for system related state
 
 const initialState = {
-  loadingCount: 0
+  connected: true
 }
 
 export default (state = initialState, action) => {
-  return state;
+  switch (action.type) {
+    case actions.WS_CONNECT:
+      return {...state, connected: true};
+    case actions.WS_DISCONNECT:
+      return {...state, connected: false};
+    default:
+      return state;
+  }
 };

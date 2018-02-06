@@ -7,7 +7,6 @@ import registerServiceWorker from './registerServiceWorker';
 
 import 'typeface-roboto';
 import 'typeface-roboto-mono';
-import 'typeface-nothing-you-could-do';
 
 import {BrowserRouter as Router} from 'react-router-dom';
 import { Provider } from 'react-redux';
