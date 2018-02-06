@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { newUserTokenSet } from '../actions/actionCreators';
+import { newUserTokenSet } from '../actions/actionCreatorsUsers';
 import './EnterInvitePage.css';
 import Card from '../components/ui/Card';
 import CardTitle from '../components/ui/CardTitle';
