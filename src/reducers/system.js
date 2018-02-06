@@ -1,5 +1,9 @@
-// reducer for roundState slice of state
+// reducer for system related state
 
-export default (state = {}, action) => {
+const initialState = {
+  loadingCount: 0
+}
+
+export default (state = initialState, action) => {
   return state;
 };

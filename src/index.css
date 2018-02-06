@@ -35,6 +35,11 @@ html, body {
   flex-direction: column;
 }
 
+.flex-ctr-ctr {
+  justify-content: center;
+  align-items: center;
+}
+
 .justify-content-center {
   justify-content: center;
 }
