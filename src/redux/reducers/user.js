@@ -1,5 +1,5 @@
 import * as actions from '../actions/actionNames';
-import userService from '../utils/userService';
+import userService from '../../utils/userService';
 
 // reducer for userState slice of state
 

@@ -1,8 +1,8 @@
 import socketClient from 'socket.io-client';
-import { websocketConnect, websocketDisconnect} from '../actions/actionCreatorsSystem';
-import store from '../store';
+import { websocketConnect, websocketDisconnect} from '../redux/actions/actionCreatorsSystem';
+import store from '../redux/store';
 
-const socket = socketClient(process.env.SOCKET_URL);
+const socket = socketClient(window.location.origin);
 
 socket.on('connect', () => {
   store.dispatch(websocketConnect());
@@ -10,6 +10,10 @@ socket.on('connect', () => {
 
 socket.on('disconnect', () => {
   store.dispatch(websocketDisconnect());
+});
+
+socket.on('message', (msg) => {
+  console.log(msg);
 });
 
 export default socket;

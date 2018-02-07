@@ -1,3 +1,17 @@
+var jwt = require('jsonwebtoken');
+var SECRET = process.env.SECRET;
+var messageNames = require('./message-names');
+
+function getUser(token) {
+  return new Promise(function(resolve, reject) {
+    jwt.verify(token, SECRET, function (err, decoded) {
+      if (err) return reject(`${err.message}\nToken: ${token}`);
+      if (!decoded.user.active) return reject(`User is Not Active\nToken: ${token}`);
+      return resolve(decoded.user);
+    });
+  });
+}
+
 module.exports = function(httpServer) {
 
   var io = require('socket.io')(httpServer);
@@ -5,23 +19,19 @@ module.exports = function(httpServer) {
   // Listen for new connections from clients (socket)
   io.on('connection', function (socket) {
 
-    // io.broadcast.to(roomId.toString()).emit('message-from-server');
-
-    /*
-      Client starts up:
-        1. Load token key from local storage
-        2. If no tokenrails
-          2a. Show Submit Invite screen
-          2b. When user submits invite code 
-      
-
-    */
-
-    socket.on('startup', function(userId) {
-      console.log('received a connect message from ', userId)
-      socket.cartel = users[userId].cartel;
-      socket.join(socket.cartel);
-      io.to(socket.cartel).emit('message', 'test data');
+    // Client app was just loaded or refreshed
+    socket.on(messageNames.REGISTER_WITH_SERVER, async function({token}) {
+      try {
+        let user = await getUser(token);
+        socket.user = user;
+        socket.join(user.cartel);
+        //TODO: send ALL initial data back to client
+        socket.emit('message', 'recieved REGISTER_WITH_SERVER');
+        //TODO: send online players update to others in cartel 
+        io.to(socket.cartel).emit('message', `user ${user.screenName} just registered`);
+      } catch (e) {
+        console.log(e);
+      }
     });
 
     socket.on('action-event', function(data) {

@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import './MainPage.css';
+import { registerWithServer } from '../redux/actions/actionCreatorsSystem';
 import AppContent from '../components/ui/AppContent';
 import DisconnectedMessage from '../components/ui/DisconnectedMessage';
 import TopAppBar from '../components/nav/TopAppBar';
@@ -8,8 +9,9 @@ import BottomNavBar from '../components/nav/BottomNavBar';
 
 class MainPage extends Component {
   componentDidMount() {
-
-    // setTimeout(()=>{this.setState({loading: false})}, 3000);
+    setTimeout(() => {
+      this.props.registerWithServer();
+    }, 100);
   }
 
   render() {
@@ -42,6 +44,6 @@ export default connect(
   }),
   // map dispatch to props
   {
-    
+    registerWithServer
   }
 )(MainPage);
