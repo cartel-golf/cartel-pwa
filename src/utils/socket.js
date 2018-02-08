@@ -1,5 +1,7 @@
 import socketClient from 'socket.io-client';
+import * as actions from '../redux/actions/actionNames';
 import { websocketConnect, websocketDisconnect} from '../redux/actions/actionCreatorsSystem';
+import { updateConnectedPlayerIds } from '../redux/actions/actionCreatorsPlayers';
 import store from '../redux/store';
 
 const socket = socketClient(window.location.origin);
@@ -12,6 +14,11 @@ socket.on('disconnect', () => {
   store.dispatch(websocketDisconnect());
 });
 
+socket.on(actions.UPDATE_CONNECTED_PLAYER_IDS, (playerIds) => {
+  store.dispatch(updateConnectedPlayerIds(playerIds));
+});
+
+// This is a listener for development purposes
 socket.on('message', (msg) => {
   console.log(msg);
 });

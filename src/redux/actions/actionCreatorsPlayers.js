@@ -1,11 +1,8 @@
 import * as actions from './actionNames';
 
-export const fetchPlayersReq = () => {
+export const updateConnectedPlayerIds = (playerIds) => {
   return {
-    type: actions.FETCH_PLAYERS_REQ,
-    meta: {
-      auth: true,
-      success: actions.FETCH_PLAYERS_SUC
-    }
+    type: actions.UPDATE_CONNECTED_PLAYER_IDS,
+    payload: playerIds
   }
 };

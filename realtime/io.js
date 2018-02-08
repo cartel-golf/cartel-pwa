@@ -12,6 +12,12 @@ function getUser(token) {
   });
 }
 
+function getUserIdsInRoom(io, room) {
+  var socketIds = Object.keys(io.nsps['/'].adapter.rooms[room].sockets);
+  var sockets = Object.values(io.nsps['/'].connected).filter(s => socketIds.includes(s.id));
+  return sockets.map(s => s.user._id);
+}
+
 module.exports = function(httpServer) {
 
   var io = require('socket.io')(httpServer);
@@ -26,9 +32,9 @@ module.exports = function(httpServer) {
         socket.user = user;
         socket.join(user.cartel);
         //TODO: send ALL initial data back to client
-        socket.emit('message', 'recieved REGISTER_WITH_SERVER');
+        socket.emit('message', `user ${user.screenName} just registered`);
         //TODO: send online players update to others in cartel 
-        io.to(socket.cartel).emit('message', `user ${user.screenName} just registered`);
+        io.to(socket.cartel).emit('UPDATE_CONNECTED_PLAYER_IDS', getUserIdsInRoom(io, user.cartel));
       } catch (e) {
         console.log(e);
       }
