@@ -18,12 +18,18 @@ async function getPlayersForCartel(cartelId) {
 }
 
 function getUserIdsInRoom(io, room) {
-  var socketIds = Object.keys(io.nsps['/'].adapter.rooms[room].sockets);
-  var sockets = Object.values(io.nsps['/'].connected).filter(s => socketIds.includes(s.id));
-  sockets = sockets.map(s => s.user._id);
-  // Unique only (allow user to connect with multiple devices)
-  return [...new Set(sockets)];
-  return sockets;
+  return new Promise((resolve, reject) => {
+    // clients method returns array of socket ids
+    io.in(room).clients((err, clients) => {
+      if (err) return reject(err);
+      // get namespace object
+      let ns = io.of('/');
+      // ns.connected is a hash (key/value pairs) of sockets
+      let ids = clients.map(client => ns.connected[client].user._id);
+      // Return unique user ids only (allow users to connect with multiple devices)
+      return resolve([...new Set(ids)]);
+    });
+  });
 }
 
 module.exports = function(httpServer) {
@@ -38,28 +44,24 @@ module.exports = function(httpServer) {
       try {
         let user = await getUser(token);
         socket.user = user;
-        socket.join(user.cartel);
-        //TODO: START send ALL initial data back to client
-        let players = await getPlayersForCartel(user.cartel);
-        socket.emit('FETCHED_PLAYERS', players);
-        // END send ALL initial data back to client
-        // Send message to update playerState.connectedPlayerIds
-        io.to(user.cartel).emit('UPDATE_CONNECTED_PLAYER_IDS', getUserIdsInRoom(io, user.cartel));
+        socket.join(user.cartel, async () => {
+          //TODO: START send ALL initial data back to client
+          let players = await getPlayersForCartel(user.cartel);
+          socket.emit('FETCHED_PLAYERS', players);
+          // END TODO: send ALL initial data back to client
+          // Send message to update playerState.connectedPlayerIds
+          io.to(user.cartel).emit('UPDATE_CONNECTED_PLAYER_IDS', await getUserIdsInRoom(io, user.cartel));
+        });
       } catch (e) {
         console.log(`Error in io.js:\n${e}`);
       }
     });
     
-    socket.on('action-event', function(data) {
-      console.log('received message from user with the ' + socket.cartel + ' cartel','With this data:', data);
-    });
-    
-    socket.on('disconnect', function() {
+    socket.on('disconnect', async function() {
       if (socket.user) {
-        io.to(socket.user.cartel).emit('UPDATE_CONNECTED_PLAYER_IDS', getUserIdsInRoom(io, socket.user.cartel));
+        io.to(socket.user.cartel).emit('UPDATE_CONNECTED_PLAYER_IDS', await getUserIdsInRoom(io, socket.user.cartel));
       }
     });
-
 
   });
 
