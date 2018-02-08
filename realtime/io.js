@@ -20,7 +20,10 @@ async function getPlayersForCartel(cartelId) {
 function getUserIdsInRoom(io, room) {
   var socketIds = Object.keys(io.nsps['/'].adapter.rooms[room].sockets);
   var sockets = Object.values(io.nsps['/'].connected).filter(s => socketIds.includes(s.id));
-  return sockets.map(s => s.user._id);
+  sockets = sockets.map(s => s.user._id);
+  // Unique only (allow user to connect with multiple devices)
+  return [...new Set(sockets)];
+  return sockets;
 }
 
 module.exports = function(httpServer) {
@@ -46,13 +49,15 @@ module.exports = function(httpServer) {
         console.log(`Error in io.js:\n${e}`);
       }
     });
-
+    
     socket.on('action-event', function(data) {
       console.log('received message from user with the ' + socket.cartel + ' cartel','With this data:', data);
     });
-
+    
     socket.on('disconnect', function() {
-      console.log('a client disconnected')
+      if (socket.user) {
+        io.to(socket.user.cartel).emit('UPDATE_CONNECTED_PLAYER_IDS', getUserIdsInRoom(io, socket.user.cartel));
+      }
     });
 
 
