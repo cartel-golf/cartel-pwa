@@ -6,3 +6,10 @@ export const updateConnectedPlayerIds = (playerIds) => {
     payload: playerIds
   }
 };
+
+export const fetchedPlayers = (players) => {
+  return {
+    type: actions.FETCHED_PLAYERS,
+    payload: players
+  }
+};

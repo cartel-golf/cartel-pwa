@@ -1,6 +1,7 @@
 var jwt = require('jsonwebtoken');
 var SECRET = process.env.SECRET;
 var messageNames = require('./message-names');
+var Player = require('../models/player');
 
 function getUser(token) {
   return new Promise(function(resolve, reject) {
@@ -10,6 +11,10 @@ function getUser(token) {
       return resolve(decoded.user);
     });
   });
+}
+
+async function getPlayersForCartel(cartelId) {
+  return await Player.find({cartel: cartelId});
 }
 
 function getUserIdsInRoom(io, room) {
@@ -31,12 +36,14 @@ module.exports = function(httpServer) {
         let user = await getUser(token);
         socket.user = user;
         socket.join(user.cartel);
-        //TODO: send ALL initial data back to client
-        socket.emit('message', `user ${user.screenName} just registered`);
-        //TODO: send online players update to others in cartel 
-        io.to(socket.cartel).emit('UPDATE_CONNECTED_PLAYER_IDS', getUserIdsInRoom(io, user.cartel));
+        //TODO: START send ALL initial data back to client
+        let players = await getPlayersForCartel(user.cartel);
+        socket.emit('FETCHED_PLAYERS', players);
+        // END send ALL initial data back to client
+        // Send message to update playerState.connectedPlayerIds
+        io.to(user.cartel).emit('UPDATE_CONNECTED_PLAYER_IDS', getUserIdsInRoom(io, user.cartel));
       } catch (e) {
-        console.log(e);
+        console.log(`Error in io.js:\n${e}`);
       }
     });
 

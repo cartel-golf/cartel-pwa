@@ -10,7 +10,7 @@ const initialState = {
 export default (state = initialState, action) => {
   switch (action.type) {
     case actions.FETCHED_PLAYERS:
-      return {players: [{name: 'Test Player'}] };
+      return {...state, players: action.payload};
     case actions.UPDATE_CONNECTED_PLAYER_IDS:
       return {...state, connectedPlayerIds: action.payload};
     default:
