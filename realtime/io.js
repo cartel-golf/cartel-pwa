@@ -13,10 +13,6 @@ function getUser(token) {
   });
 }
 
-async function getPlayersForCartel(cartelId) {
-  return await Player.find({cartel: cartelId});
-}
-
 function getUserIdsInRoom(io, room) {
   return new Promise((resolve, reject) => {
     // clients method returns array of socket ids
@@ -46,7 +42,7 @@ module.exports = function(httpServer) {
         socket.user = user;
         socket.join(user.cartel, async () => {
           //TODO: START send ALL initial data back to client
-          let players = await getPlayersForCartel(user.cartel);
+          let players = await Player.findByCartel(user.cartel);
           socket.emit('FETCHED_PLAYERS', players);
           // END TODO: send ALL initial data back to client
           // Send message to update playerState.connectedPlayerIds

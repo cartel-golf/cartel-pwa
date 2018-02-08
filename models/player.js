@@ -18,4 +18,8 @@ var playerSchema = new Schema({
   }
 });
 
+playerSchema.statics.findByCartel = function(cartel) {
+  return this.find({cartel: cartel});
+}
+
 module.exports = mongoose.model('Player', playerSchema);
