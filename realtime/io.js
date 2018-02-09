@@ -35,11 +35,26 @@ module.exports = function(httpServer) {
   // Listen for new connections from clients (socket)
   io.on('connection', function (socket) {
 
-    // Client app was just loaded or refreshed
-    socket.on(messageNames.REGISTER_WITH_SERVER, async function({token}) {
-      try {
-        let user = await getUser(token);
+    // Middleware to check auth
+    socket.use((message, next) => {
+      // Don't authenticate if disconnecting
+      if (message[0] === 'disconnect') return next();
+      // Verify token and attach user in token to socket each time - will have
+      // to ensure that token is reissued if any player data changes...
+      getUser(message[1].token)
+      .then(user => {
         socket.user = user;
+        next();
+      })
+      .catch(err => {
+        next(new Error('Socket IO ERROR: Client needs to provide credenitals'));
+      });
+    });
+
+    // Client app was just loaded or refreshed
+    socket.on(messageNames.REGISTER_WITH_SERVER, async function() {
+      var user = socket.user;
+      try {
         socket.join(user.cartel, async () => {
           //TODO: START send ALL initial data back to client
           let players = await Player.findByCartel(user.cartel);
