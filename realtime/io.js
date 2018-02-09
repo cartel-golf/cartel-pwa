@@ -32,7 +32,6 @@ module.exports = function(httpServer) {
 
   var io = require('socket.io')(httpServer);
 
-  // Listen for new connections from clients (socket)
   io.on('connection', function (socket) {
 
     // Middleware to check auth
@@ -47,12 +46,19 @@ module.exports = function(httpServer) {
         next();
       })
       .catch(err => {
+        // If REGISTER_WITH_SERVER and bad token - callback client with 'false'
+        if (message[0] === messageNames.REGISTER_WITH_SERVER) {
+          // Client's callback is last argument
+          message[message.length - 1](false);
+        }
         next(new Error('Socket IO ERROR: Client needs to provide credenitals'));
       });
     });
 
     // Client app was just loaded or refreshed
-    socket.on(messageNames.REGISTER_WITH_SERVER, async function() {
+    socket.on(messageNames.REGISTER_WITH_SERVER, async function(token, cb) {
+      // Successful registration - callback client with true
+      cb(true);
       var user = socket.user;
       try {
         socket.join(user.cartel, async () => {

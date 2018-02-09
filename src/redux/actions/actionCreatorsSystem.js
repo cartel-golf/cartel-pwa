@@ -8,7 +8,10 @@ export const websocketDisconnect = () => ({
   type: actions.WS_DISCONNECT
 });
 
-export const registerWithServer = () => ({
+export const registerWithServer = (callback) => ({
   type: actions.REGISTER_WITH_SERVER,
-  meta: { socket: true }
+  meta: {
+    socket: true,
+    callback
+  }
 });

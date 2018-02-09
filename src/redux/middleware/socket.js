@@ -12,7 +12,12 @@ const socketMiddleware = store => next => action => {
   if (socket.connected && token) {
     let data = { token };
     if (action.payload) data.payload = action.payload;
-    socket.emit(action.type, data);
+    // If a callback is referenced in a meta key...
+    if (action.meta && action.meta.callback) {
+      socket.emit(action.type, data, action.meta.callback);
+    } else {
+      socket.emit(action.type, data);
+    }
   } 
 };
 
