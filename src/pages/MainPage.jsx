@@ -10,10 +10,15 @@ import BottomNavBar from '../components/nav/BottomNavBar';
 
 class MainPage extends Component {
 
+  state = {
+    loading: true
+  };
+
   // This function will be called with 'true' if user's registration on the 
   // server is successful (token is valid), otherwise 'false' results in 
   // removing token from localStorage
-  registerCallback(successful) {
+  registerCallback = (successful) => {
+    this.setState({loading: false});
     if (!successful) {
       tokenService.removeToken();
       window.location = '/';
@@ -23,12 +28,12 @@ class MainPage extends Component {
   componentDidMount() {
     setTimeout(() => {
       this.props.registerWithServer(this.registerCallback);
-    }, 100);
+    }, 0);
   }
 
   render() {
     let screen;
-    if (this.props.loadingCount > 0) {
+    if (this.state.loading) {
       screen = <h1>Loading Icon</h1>;
     } else if (this.props.curRound) {
       screen = <h1>Round in Progress Page</h1>;

@@ -7,9 +7,9 @@ export const updateConnectedPlayerIds = (playerIds) => {
   }
 };
 
-export const fetchedPlayers = (players) => {
+export const setPlayers = (players) => {
   return {
-    type: actions.FETCHED_PLAYERS,
+    type: actions.SET_PLAYERS,
     payload: players
   }
 };
