@@ -1,17 +1,6 @@
-var jwt = require('jsonwebtoken');
-var SECRET = process.env.SECRET;
+var getUser = require('../utilities/jwt').getUser;
 var messageNames = require('./message-names');
 var Player = require('../models/player');
-
-function getUser(token) {
-  return new Promise(function(resolve, reject) {
-    jwt.verify(token, SECRET, function (err, decoded) {
-      if (err) return reject(`${err.message}\nToken: ${token}`);
-      if (!decoded.user.active) return reject(`User is Not Active\nToken: ${token}`);
-      return resolve(decoded.user);
-    });
-  });
-}
 
 function getUserIdsInRoom(io, room) {
   return new Promise((resolve, reject) => {

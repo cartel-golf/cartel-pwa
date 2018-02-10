@@ -1,5 +1,4 @@
-var jwt = require('jsonwebtoken');
-var SECRET = process.env.SECRET;
+var createJWT = require('../utilities/jwt').createJWT;
 var Player = require('../models/player');
 
 function inviteSubmit(req, res) {
@@ -8,15 +7,6 @@ function inviteSubmit(req, res) {
     if (player) return res.json({ token: createJWT(player) });
     res.status(403).json('invalid code entered');
   })
-}
-
-/*--- helper functions ---*/
-
-function createJWT(player) {
-  return jwt.sign(
-    { user: player },
-    SECRET
-  );
 }
 
 module.exports = {
