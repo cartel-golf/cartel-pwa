@@ -31,6 +31,6 @@ var server = app.listen(port, function () {
 });
 
 // load socket.io
-require('./realtime/io')(server);
+require('./realtime/io').init(server);
 
 module.exports = app;
