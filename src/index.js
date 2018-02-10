@@ -7,6 +7,7 @@ import registerServiceWorker from './registerServiceWorker';
 
 import 'typeface-roboto';
 import 'typeface-roboto-mono';
+import 'typeface-montserrat';
 
 import {BrowserRouter as Router} from 'react-router-dom';
 import { Provider } from 'react-redux';
