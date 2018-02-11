@@ -21,13 +21,15 @@ class EnterInvitePage extends Component {
   }
   
   handleSubmit = (e) => {
-    e.preventDefault();
-    userService.submitInvite(this.state.enteredCode)
-    .then((user) => {
-      this.props.newUserTokenSet(user);
-    })
-    .catch(err => {
-      this.setState({ message: err.message});
+    this.inputEl.focus();
+    setTimeout(() => {
+      userService.submitInvite(this.state.enteredCode)
+      .then((user) => {
+        this.props.newUserTokenSet(user);
+      })
+      .catch(err => {
+        this.setState({ message: err.message});
+      });
     });
   }
   
@@ -42,7 +44,7 @@ class EnterInvitePage extends Component {
               <p>Welcome to Cartel Golf</p>
               <p className='sub-title'>Submit the invite code you obtained from an existing member of the cartel you wish to join:</p>
             </CardTitle>
-            <input id='inp' type='text' autoComplete='off'
+            <input ref={inp => this.inputEl = inp}id='inp' type='text' autoComplete='off'
               placeholder='Enter Your Invite Code'
               value={this.state.enteredCode} onChange={this.handleChange}
             />
