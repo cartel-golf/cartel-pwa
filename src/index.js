@@ -12,15 +12,17 @@ import { Provider } from 'react-redux';
 import store from './redux/store';
 
 // connect to the socket.io server
-import './utils/socket';
-
-ReactDOM.render(
-  <Provider store={store} >
-    <Router>
-      <Route path="/" component={App} />
-    </Router>
-  </Provider>,
-  document.getElementById('root')
-);
+import socket from './utils/socket';
+socket.on('connect', () => {
+  // Don't render until socket is connected
+  ReactDOM.render(
+    <Provider store={store} >
+      <Router>
+        <Route path="/" component={App} />
+      </Router>
+    </Provider>,
+    document.getElementById('root')
+  );
+});
 
 registerServiceWorker();

@@ -4,7 +4,8 @@ import { websocketConnect, websocketDisconnect} from '../redux/actions/actionCre
 import { updateConnectedPlayerIds, setPlayers } from '../redux/actions/actionCreatorsPlayers';
 import store from '../redux/store';
 
-const socket = socketClient(window.location.origin);
+// Connects to window.location by default
+const socket = socketClient();
 
 socket.on('connect', () => {
   store.dispatch(websocketConnect());

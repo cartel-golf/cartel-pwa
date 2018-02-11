@@ -3,8 +3,8 @@ import * as actions from '../actions/actionNames';
 // reducer for system related state
 
 const initialState = {
-  connected: true
-}
+  connected: false
+};
 
 export default (state = initialState, action) => {
   switch (action.type) {

@@ -18,17 +18,16 @@ class MainPage extends Component {
   // server is successful (token is valid), otherwise 'false' results in 
   // removing token from localStorage
   registerCallback = (successful) => {
-    this.setState({loading: false});
     if (!successful) {
       tokenService.removeToken();
       window.location = '/';
+    } else {
+      this.setState({loading: false});
     }
   } 
 
   componentDidMount() {
-    setTimeout(() => {
       this.props.registerWithServer(this.registerCallback);
-    }, 0);
   }
 
   render() {
