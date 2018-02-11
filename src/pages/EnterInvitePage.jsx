@@ -25,7 +25,10 @@ class EnterInvitePage extends Component {
     setTimeout(() => {
       userService.submitInvite(this.state.enteredCode)
       .then((user) => {
-        this.props.newUserTokenSet(user);
+        e.target.focus();
+        setTimeout(() => {
+          this.props.newUserTokenSet(user);
+        });
       })
       .catch(err => {
         this.setState({ message: err.message});
