@@ -21,11 +21,15 @@ class EnterInvitePage extends Component {
   }
   
   handleSubmit = (e) => {
+    let btn = e.target;
     this.inputEl.focus();
     setTimeout(() => {
       userService.submitInvite(this.state.enteredCode)
       .then((user) => {
-        this.props.newUserTokenSet(user);
+        btn.focus();
+        setTimeout(() => {
+          this.props.newUserTokenSet(user);
+        });
       })
       .catch(err => {
         this.setState({ message: err.message});
