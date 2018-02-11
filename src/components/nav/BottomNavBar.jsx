@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
 import './BottomNavBar.css';
+import { connect } from 'react-redux';
 
 // TODO: remove - temp code
 import userService from '../../utils/userService';
 
-export default class BottomNavBar extends Component {
+class BottomNavBar extends Component {
   constructor() {
     super();
     this.state = {
@@ -15,6 +16,7 @@ export default class BottomNavBar extends Component {
   select = (index) => this.setState({ selectedIndex: index });
 
   render() {
+    if (this.props.curRoute.hideBottomNavBar) return null;
     return (
       <nav className='BottomNavBar footer' data-selected-index={this.state.selectedIndex}>
 
@@ -32,3 +34,14 @@ export default class BottomNavBar extends Component {
     );
   }
 }
+
+export default connect(
+  // map state to props
+  (state) => ({
+    curRoute: state.routerState.curRoute,
+    user: state.userState.user
+  }),
+  // map dispatch to props
+  {
+  }
+)(BottomNavBar);
