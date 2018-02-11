@@ -7,7 +7,7 @@ import registerServiceWorker from './registerServiceWorker';
 
 import 'typeface-roboto';
 
-import {BrowserRouter as Router} from 'react-router-dom';
+import {BrowserRouter as Router, Route} from 'react-router-dom';
 import { Provider } from 'react-redux';
 import store from './redux/store';
 
@@ -17,7 +17,7 @@ import './utils/socket';
 ReactDOM.render(
   <Provider store={store} >
     <Router>
-      <App />
+      <Route path="/" component={App} />
     </Router>
   </Provider>,
   document.getElementById('root')
