@@ -1,7 +1,8 @@
 const routes = {
   allRounds: {
     title: 'All Rounds',
-    hideBottomNavBar: true
+    showBackArrow: false,
+    hideBottomNavBar: false
   }
 }
 
