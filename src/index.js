@@ -13,6 +13,7 @@ import store from './redux/store';
 
 // connect to the socket.io server
 import socket from './utils/socket';
+
 socket.on('connect', () => {
   // Don't render until socket is connected
   ReactDOM.render(

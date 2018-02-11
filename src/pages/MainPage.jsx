@@ -56,6 +56,7 @@ export default connect(
   // map state to props
   (state) => ({
     systemState: state.systemState,
+    curRoute: state.routerState.curRoute,
     user: state.userState.user
   }),
   // map dispatch to props
