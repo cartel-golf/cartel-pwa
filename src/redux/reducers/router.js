@@ -1,5 +1,5 @@
 import * as actions from '../actions/actionNames';
-import routes from '../../routes';
+import routes from '../../routeConfig';
 
 // reducer for router related state
 
