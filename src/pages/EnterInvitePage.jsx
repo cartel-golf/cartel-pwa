@@ -2,10 +2,18 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { newUserTokenSet } from '../redux/actions/actionCreatorsUsers';
 import './EnterInvitePage.css';
-import Card from '../components/ui/Card';
-import CardTitle from '../components/ui/CardTitle';
-import CardButtonContainer from '../components/ui/CardButtonContainer';
+import Card, { CardContent, CardActions } from 'material-ui/Card';
+import Typography from 'material-ui/Typography';
+import Input, { InputLabel } from 'material-ui/Input';
+import { FormControl, FormHelperText } from 'material-ui/Form';
+import { withStyles } from 'material-ui/styles';
+import Button from 'material-ui/Button';
 import userService from '../utils/userService';
+
+const styles = {
+  pullRight: { marginLeft: 'auto' },
+  CardActions: { paddingRight: 8 }
+};
 
 class EnterInvitePage extends Component {
   state = {
@@ -34,25 +42,32 @@ class EnterInvitePage extends Component {
   }
   
   render() {
+    let { classes } = this.props;
     return (
       <main className='EnterInvitePage'>
         <div className='EnterInvietPage-img'>
           <img src={require('../images/logo-2.png')} alt='' />
         </div>
-          <Card>
-            <CardTitle className='CardTitle'>
-              <p>Welcome to Cartel Golf</p>
-              <p className='sub-title'>Submit the invite code you obtained from an existing member of the cartel you wish to join:</p>
-            </CardTitle>
-            <input ref={inp => this.inputEl = inp}id='inp' type='text' autoComplete='off'
-              placeholder='Enter Your Invite Code'
-              value={this.state.enteredCode} onChange={this.handleChange}
-            />
-            <p className='helper error-text'>{this.state.message || ' '}</p>
-            <CardButtonContainer>
-              <button onClick={this.handleSubmit}>SUBMIT INVITE</button>
-            </CardButtonContainer>
-          </Card>
+        <Card>
+          <CardContent>
+            <Typography variant="headline" gutterBottom>
+              Welcome to Cartel Golf
+            </Typography>
+            <Typography variant="subheading" gutterBottom>
+              Submit the invite code you obtained from an existing member of the cartel you wish to join:
+            </Typography>
+            <FormControl error={!!this.state.message} fullWidth>
+              <InputLabel color='secondary' htmlFor="code">Enter Your Invite Code</InputLabel>
+              <Input color='secondary' inputRef={inp => this.inputEl = inp} id="code" autoComplete='off' onChange={this.handleChange} />
+              <FormHelperText>{this.state.message}</FormHelperText>
+            </FormControl>
+          </CardContent>
+          <CardActions className={classes.CardActions}>
+            <Button className={classes.pullRight} onClick={this.handleSubmit} variant="raised" color='primary'>
+              SUBMIT INVITE
+            </Button>
+          </CardActions>
+        </Card>
       </main>
     );
   }
@@ -65,4 +80,4 @@ export default connect(
   {
     newUserTokenSet
   }
-)(EnterInvitePage);
+)(withStyles(styles)(EnterInvitePage));

@@ -30,12 +30,14 @@
   --error-text: var(--primary-dark-color);
 }
 
-.error-text {
-  color: var(--error-text);
-}
-
 body {
   background-color: var(--window-bg-color);
+}
+
+
+/* 
+.error-text {
+  color: var(--error-text);
 }
 
 input, textarea, select {
@@ -86,4 +88,4 @@ button.invert {
 .sub-title {
   font-size: 14px;
   color: var(--secondary-dark-text);
-}
+} */

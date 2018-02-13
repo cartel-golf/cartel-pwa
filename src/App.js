@@ -19,6 +19,9 @@ const theme = createMuiTheme({
       dark: '#003300',
       contrastText: '#fff',
     },
+    error: {
+      main: '#911b4b'
+    }
   },
 });
 
@@ -33,7 +36,9 @@ class App extends Component {
           </MuiThemeProvider>
         </Route>
       :
-        <EnterInvitePage/>
+        <MuiThemeProvider theme={theme}>
+          <EnterInvitePage/>
+        </MuiThemeProvider>
     );
   }
 }
