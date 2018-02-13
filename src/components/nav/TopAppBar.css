@@ -1,6 +1,7 @@
 
 .TopAppBar {
   display: flex;
+  justify-content: space-between;
   align-items: center;
   height: 56px;
   padding-left: 16px;
@@ -12,8 +13,20 @@
   grid-area: header;
 }
 
+.TopAppBar .left-side {
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: flex-start;
+}
+
+.TopAppBar .right-side {
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: flex-end;
+}
+
 .TopAppBar-title {
-  position: absolute;
+  /* position: absolute; */
   color: var(--primary-light-text);
   left: 56px;
   font-size: 20px;

@@ -21,7 +21,6 @@ class EnterInvitePage extends Component {
   }
   
   handleSubmit = (e) => {
-    let btn = e.target;
     this.inputEl.focus();
     setTimeout(() => {
       userService.submitInvite(this.state.enteredCode)
