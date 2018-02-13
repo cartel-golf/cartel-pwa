@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import './TopAppBar.css';
 
+import MoreIcon from 'material-ui-icons/MoreVert';
+
 class TopAppBar extends Component {
   render() {
     let route = this.props.curRoute;
@@ -10,7 +12,8 @@ class TopAppBar extends Component {
         <div className="left-side">
           <div className='TopAppBar-title'>{route.title}</div>
         </div>
-        <div className='right-side'>
+        <div className='right-side' style={{color:'white'}}>
+          <MoreIcon/>
           {/* {put more_vert icon here if there's this.state.curRoute.moreMenu} */}
         </div>
       </nav>

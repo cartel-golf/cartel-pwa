@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import './MainPage.css';
 import tokenService from '../utils/tokenService';
 import { registerWithServer } from '../redux/actions/actionCreatorsSystem';
+import Reboot from 'material-ui/Reboot';
 import AppContent from '../components/ui/AppContent';
 import DisconnectedMessage from '../components/ui/DisconnectedMessage';
 import TopAppBar from '../components/nav/TopAppBar';
@@ -40,14 +41,17 @@ class MainPage extends Component {
       screen = <h1>All Rounds Page</h1>;
     }
     return (
-      <main className='MainPage'>
-        <TopAppBar/>
-        { !this.props.systemState.connected && <DisconnectedMessage/> }
-        <AppContent>
-          { screen }
-        </AppContent>
-        <BottomNavBar/>
-      </main>
+      <React.Fragment>
+        <Reboot/>
+        <main className='MainPage'>
+          <TopAppBar/>
+          { !this.props.systemState.connected && <DisconnectedMessage/> }
+          <AppContent>
+            { screen }
+          </AppContent>
+          <BottomNavBar/>
+        </main>
+      </React.Fragment>
     );
   }
 };

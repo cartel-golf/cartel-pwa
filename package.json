@@ -9,6 +9,8 @@
     "jquery": "^3.2.1",
     "js-shortid": "^0.1.1",
     "jsonwebtoken": "^8.1.0",
+    "material-ui": "^1.0.0-beta.33",
+    "material-ui-icons": "^1.0.0-beta.17",
     "mongoose": "^4.13.9",
     "morgan": "~1.8.1",
     "react": "^16.2.0",
