@@ -1,24 +1,37 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { connect } from 'react-redux';
-import './TopAppBar.css';
-
+import AppBar from 'material-ui/AppBar';
+import Toolbar from 'material-ui/Toolbar';
+import IconButton from 'material-ui/IconButton';
+import MenuIcon from 'material-ui-icons/Menu';
+import Typography from 'material-ui/Typography';
 import MoreIcon from 'material-ui-icons/MoreVert';
+import { withStyles } from 'material-ui/styles';
 
-class TopAppBar extends Component {
-  render() {
-    let route = this.props.curRoute;
-    return (
-      <nav className='TopAppBar header'>
-        <div className="left-side">
-          <div className='TopAppBar-title'>{route.title}</div>
-        </div>
-        <div className='right-side' style={{color:'white'}}>
-          <MoreIcon/>
-          {/* {put more_vert icon here if there's this.state.curRoute.moreMenu} */}
-        </div>
-      </nav>
-    );
+const styles = {
+  flex: { flex: 1 },
+  Toolbar: {
+    paddingLeft: 0,
+    paddingRight: 0
   }
+};
+
+const TopAppBar = (props) => {
+  let route = props.curRoute;
+  let { classes } = props;
+  return (
+    <AppBar position="static">
+      <Toolbar className={classes.Toolbar}>
+        <IconButton  color="inherit">
+          <MenuIcon />
+        </IconButton>
+        <Typography variant="title" color="inherit" className={classes.flex}>
+          Title
+        </Typography>
+        {route.moreMenu && <IconButton color='inherit'><MoreIcon/></IconButton>}
+      </Toolbar>
+    </AppBar>
+  );
 }
 
 export default connect(
@@ -29,4 +42,4 @@ export default connect(
   // map dispatch to props
   {
   }
-)(TopAppBar);
+)(withStyles(styles)(TopAppBar));
