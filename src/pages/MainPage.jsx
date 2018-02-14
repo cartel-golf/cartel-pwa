@@ -4,14 +4,44 @@ import './MainPage.css';
 import tokenService from '../utils/tokenService';
 import { registerWithServer } from '../redux/actions/actionCreatorsSystem';
 import Reboot from 'material-ui/Reboot';
+import List, { ListItem, ListItemIcon, ListItemText } from 'material-ui/List';
+import InboxIcon from 'material-ui-icons/Inbox';
+import Divider from 'material-ui/Divider';
+import Drawer from 'material-ui/Drawer';
 import AppContent from '../components/ui/AppContent';
 import DisconnectedMessage from '../components/ui/DisconnectedMessage';
 import TopAppBar from '../components/nav/TopAppBar';
 import BottomNavBar from '../components/nav/BottomNavBar';
 
+const sideList = (
+  <div>
+    <List component="nav">
+      <ListItem button>
+        <ListItemIcon>
+          <InboxIcon />
+        </ListItemIcon>
+        <ListItemText primary="Inbox" />
+      </ListItem>
+      <ListItem button>
+        <ListItemText primary="Drafts" />
+      </ListItem>
+    </List>
+    <Divider />
+    <List component="nav">
+      <ListItem button>
+        <ListItemText primary="Trash" />
+      </ListItem>
+      <ListItem button component="a" href="#simple-list">
+        <ListItemText primary="Spam" />
+      </ListItem>
+    </List>
+  </div>
+);
+
 class MainPage extends Component {
 
   state = {
+    drawerOpen: false,
     loading: true
   };
 
@@ -25,7 +55,13 @@ class MainPage extends Component {
     } else {
       this.setState({loading: false});
     }
-  } 
+  }
+
+  toggleDrawer = (open) => {
+    this.setState({
+      drawerOpen: open,
+    });
+  };
 
   componentDidMount() {
       this.props.registerWithServer(this.registerCallback);
@@ -44,13 +80,23 @@ class MainPage extends Component {
       <React.Fragment>
         <Reboot/>
         <main className='MainPage'>
-          <TopAppBar/>
+          <TopAppBar toggleDrawer={this.toggleDrawer}/>
           { !this.props.systemState.connected && <DisconnectedMessage/> }
           <AppContent>
             { screen }
           </AppContent>
           <BottomNavBar/>
         </main>
+        <Drawer open={this.state.drawerOpen} onClose={() => this.toggleDrawer(false)}>
+          <div
+            tabIndex={0}
+            role="button"
+            onClick={() => this.toggleDrawer(false)}
+            onKeyDown={() => this.toggleDrawer(false)}
+          >
+            {sideList}
+          </div>
+        </Drawer>
       </React.Fragment>
     );
   }

@@ -22,11 +22,11 @@ const TopAppBar = (props) => {
   return (
     <AppBar position="static">
       <Toolbar className={classes.Toolbar}>
-        <IconButton  color="inherit">
+        <IconButton onClick={() => props.toggleDrawer(true)} color="inherit">
           <MenuIcon />
         </IconButton>
         <Typography variant="title" color="inherit" className={classes.flex}>
-          Title
+          {route.title}
         </Typography>
         {route.moreMenu && <IconButton color='inherit'><MoreIcon/></IconButton>}
       </Toolbar>
