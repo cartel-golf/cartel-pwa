@@ -1,35 +1,9 @@
-
-.TopAppBar {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  height: 56px;
-  padding-left: 16px;
-  padding-right: 16px;
-  background-color: var(--primary-color);
+#TopAppBar-Toolbar {
+  padding-left: 0;
+  padding-right: 0;
 }
 
-.TopAppBar.header {
-  grid-area: header;
-}
-
-.TopAppBar .left-side {
-  display: flex;
-  flex-flow: row nowrap;
-  justify-content: flex-start;
-}
-
-.TopAppBar .right-side {
-  display: flex;
-  flex-flow: row nowrap;
-  justify-content: flex-end;
-}
-
-.TopAppBar-title {
-  /* position: absolute; */
-  color: var(--primary-light-text);
-  left: 56px;
-  font-size: 20px;
-  font-weight: 500;
+#TopAppBar-title {
+  flex: 1;
 }
  
