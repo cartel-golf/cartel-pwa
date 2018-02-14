@@ -2,8 +2,6 @@ import React, { Component } from 'react';
 import './BottomNavBar.css';
 import { connect } from 'react-redux';
 
-// TODO: remove - temp code
-import userService from '../../utils/userService';
 
 class BottomNavBar extends Component {
   constructor() {
@@ -12,16 +10,14 @@ class BottomNavBar extends Component {
       selectedIndex: 0
     }
   }
-
+  
+  // TODO: remove - temp code
   select = (index) => this.setState({ selectedIndex: index });
 
   render() {
     if (this.props.curRoute.hideBottomNavBar) return null;
     return (
       <nav className='BottomNavBar footer' data-selected-index={this.state.selectedIndex}>
-
-        <button onClick={userService.forgetMe}>FORGET ME</button>
-
         <div
           label="Favorites"
           onClick={() => this.select(0)}

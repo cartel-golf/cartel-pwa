@@ -12,6 +12,7 @@ import AppContent from '../components/ui/AppContent';
 import DisconnectedMessage from '../components/ui/DisconnectedMessage';
 import TopAppBar from '../components/nav/TopAppBar';
 import BottomNavBar from '../components/nav/BottomNavBar';
+import userService from '../utils/userService';
 
 const sideList = (
   <div>
@@ -33,6 +34,12 @@ const sideList = (
       </ListItem>
       <ListItem button component="a" href="#simple-list">
         <ListItemText primary="Spam" />
+      </ListItem>
+    </List>
+    <Divider />
+    <List>
+      <ListItem button>
+        <ListItemText primary="Forget Me" onClick={userService.forgetMe}/>
       </ListItem>
     </List>
   </div>
@@ -88,7 +95,7 @@ class MainPage extends Component {
           <BottomNavBar/>
         </main>
         <Drawer open={this.state.drawerOpen} onClose={() => this.toggleDrawer(false)}>
-          <div
+          <div className='MainPage-Drawer'
             tabIndex={0}
             role="button"
             onClick={() => this.toggleDrawer(false)}

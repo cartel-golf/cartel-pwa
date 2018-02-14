@@ -12,3 +12,8 @@
     56px;
   background-color: var(--window-bg-color);
 }
+
+.MainPage-Drawer {
+  width: calc(100vw - 56px);
+  max-width: 320px;
+}
