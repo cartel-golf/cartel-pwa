@@ -1,4 +1,5 @@
 import React from 'react';
+import './SideDrawer.css';
 import { connect } from 'react-redux';
 import { toggleDrawer } from '../../redux/actions/actionCreatorsSystem';
 import Drawer from 'material-ui/Drawer';
@@ -12,8 +13,8 @@ import InboxIcon from 'material-ui-icons/Inbox';
 const SideDrawer = ({ drawerOpen, toggleDrawer }) => {
   return (
     <Drawer open={drawerOpen} onClose={() => toggleDrawer(false)}>
-      <div className='MainPage-Drawer'
-        tabIndex={0}
+      <div className='SideDrawer'
+        // tabIndex={0}
         role="button"
         onClick={() => toggleDrawer(false)}
         onKeyDown={() => toggleDrawer(false)}
