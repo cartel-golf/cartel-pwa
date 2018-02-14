@@ -1,4 +1,5 @@
 /*--- systemState actions ---*/
+export const TOGGLE_DRAWER = 'TOGGLE_DRAWER';
 export const WS_CONNECT = 'WS_CONNECT';
 export const WS_DISCONNECT = 'WS_DISCONNECT';
 export const REGISTER_WITH_SERVER = 'REGISTER_WITH_SERVER';

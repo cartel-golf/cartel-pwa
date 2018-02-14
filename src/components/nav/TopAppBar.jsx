@@ -1,5 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import { toggleDrawer } from '../../redux/actions/actionCreatorsSystem';
 import AppBar from 'material-ui/AppBar';
 import Toolbar from 'material-ui/Toolbar';
 import IconButton from 'material-ui/IconButton';
@@ -41,5 +42,6 @@ export default connect(
   }),
   // map dispatch to props
   {
+    toggleDrawer
   }
 )(withStyles(styles)(TopAppBar));
