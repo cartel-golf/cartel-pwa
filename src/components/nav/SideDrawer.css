@@ -1,5 +1,28 @@
 
 .SideDrawer {
   width: calc(100vw - 56px);
-  max-width: 320px;
+  max-width: 280px;
 }
+
+.SideDrawer-UserHeader {
+  height: 150px;
+  background-color: var(--primary-color);
+  padding: 16px;
+  display: flex;
+  justify-content: center;
+}
+
+.SideDrawer-UserHeader img {
+  width: 90px;
+}
+
+.SideDrawer-UserHeader div:first-child {
+  margin-right: 5px;
+}
+
+.SideDrawer-UserHeader div:nth-child(2) {
+  margin-left: 5px;
+}
+
+
+

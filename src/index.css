@@ -40,6 +40,11 @@ html, body {
   align-items: center;
 }
 
+.flex-ctr-end {
+  justify-content: center;
+  align-items: flex-end;
+}
+
 .justify-content-center {
   justify-content: center;
 }
