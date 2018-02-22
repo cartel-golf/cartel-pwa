@@ -1,6 +1,7 @@
 import socketClient from 'socket.io-client';
 import * as actions from '../redux/actions/actionNames';
-import { websocketConnect, websocketDisconnect} from '../redux/actions/actionCreatorsSystem';
+import { websocketConnect, websocketDisconnect } from '../redux/actions/actionCreatorsSystem';
+import { setCartel } from '../redux/actions/actionCreatorsCartel';
 import { updateConnectedPlayerIds, setPlayers } from '../redux/actions/actionCreatorsPlayers';
 import store from '../redux/store';
 
@@ -13,6 +14,11 @@ socket.on('connect', () => {
 
 socket.on('disconnect', () => {
   store.dispatch(websocketDisconnect());
+});
+
+socket.on(actions.SET_INITIAL_DATA, (initialData) => {
+  store.dispatch(setCartel(initialData.cartel));
+  store.dispatch(setPlayers(initialData.players));
 });
 
 socket.on(actions.UPDATE_CONNECTED_PLAYER_IDS, (playerIds) => {

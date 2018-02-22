@@ -1,5 +1,6 @@
 var getUser = require('../utilities/jwt').getUser;
 var messageNames = require('./message-names');
+var Cartel = require('../models/cartel');
 var Player = require('../models/player');
 var rtPlayers = require('../realtime/players');
 
@@ -48,10 +49,16 @@ function init(httpServer) {
       var user = socket.user;
       try {
         socket.join(user.cartel, async () => {
-          //TODO: START send ALL initial data back to client
-          let players = await Player.findByCartel(user.cartel);
-          socket.emit('SET_PLAYERS', players);
-          // END TODO: send ALL initial data back to client
+          let allInitialData = await Promise.all([
+            Cartel.findById(user.cartel).select('name defaultCourse').exec(),
+            Player.findByCartel(user.cartel)
+          ]);
+          // Transform array into an object
+          allInitialData = {
+            cartel: allInitialData[0],
+            players: allInitialData[1],
+          };
+          socket.emit(messageNames.SET_INITIAL_DATA, allInitialData);
           // Send message to update playerState.connectedPlayerIds
           io.to(user.cartel).emit('UPDATE_CONNECTED_PLAYER_IDS', await rtPlayers.getUserIdsInRoom(io, user.cartel));
         });

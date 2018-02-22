@@ -12,7 +12,7 @@ import Logo from '../../images/logo-2.png';
 // TODO: for dev only - remove
 import InboxIcon from 'material-ui-icons/Inbox';
 
-const SideDrawer = ({ drawerOpen, toggleDrawer }) => {
+const SideDrawer = ({ drawerOpen, toggleDrawer, cartel }) => {
   return (
     <Drawer open={drawerOpen} onClose={() => toggleDrawer(false)}>
       <div className='SideDrawer' role="button" onClick={() => toggleDrawer(false)}>
@@ -21,7 +21,9 @@ const SideDrawer = ({ drawerOpen, toggleDrawer }) => {
             <img src={Logo} alt='' />
           </div>
           <div className='flex-row flex-ctr-ctr'>
-            <Typography variant="title" style={{color: 'white'}}>The Cartel</Typography>
+            <Typography variant="title" style={{color: 'white'}}>
+              {cartel.name}
+            </Typography>
           </div>
         </div>
         <List component="nav">
@@ -57,7 +59,8 @@ const SideDrawer = ({ drawerOpen, toggleDrawer }) => {
 
 export default connect(
   (state) => ({
-    drawerOpen: state.systemState.sideDrawerOpen
+    drawerOpen: state.systemState.sideDrawerOpen,
+    cartel: state.cartelState
   }),
   {
     toggleDrawer
